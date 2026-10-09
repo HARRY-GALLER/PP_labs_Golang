@@ -71,7 +71,7 @@ func main() {
 	str_len := func(str string) int {
 		return len(str)
 	}
-
+	
 	fmt.Printf("Длинна строки - %v символов\n", str_len(str))
 
 	//
