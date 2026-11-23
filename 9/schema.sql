@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS users (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL CHECK (length(trim(name)) >= 2),
+    age INTEGER NOT NULL CHECK (age BETWEEN 1 AND 120),
+    email VARCHAR(254) NOT NULL UNIQUE
+);

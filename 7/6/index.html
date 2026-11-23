@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket чат</title>
+</head>
+<body>
+    <h1>WebSocket чат</h1>
+
+    <input
+        id="message"
+        type="text"
+        placeholder="Введите сообщение">
+
+    <button onclick="sendMessage()">
+        Отправить
+    </button>
+
+    <ul id="messages"></ul>
+
+    <script>
+        const socket = new WebSocket(
+            "ws://localhost:8080/ws"
+        );
+
+        socket.onmessage = function(event) {
+            const list = document.getElementById("messages");
+            const item = document.createElement("li");
+
+            item.textContent = event.data;
+
+            list.appendChild(item);
+        };
+
+        function sendMessage() {
+            const input =
+                document.getElementById("message");
+
+            socket.send(input.value);
+
+            input.value = "";
+        }
+    </script>
+</body>
+</html>
